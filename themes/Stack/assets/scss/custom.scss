@@ -1,0 +1,156 @@
+/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+* {
+    ::selection {
+        color: #ffff;
+        background: #b1437ea3;
+    }
+    
+    scrollbar-width: thin;
+    scrollbar-color: #a59d9d45 transparent;
+    /* 针对Webkit内核的浏览器 */
+    &::-webkit-scrollbar {
+        /* 设置滚动条的宽度 */
+        width: 8px;
+    }
+
+    /* 滚动条轨道 - 背景颜色/白底 */
+    &::-webkit-scrollbar-track {
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    /* 滚动条的滑块部分 */
+    &::-webkit-scrollbar-thumb {
+        background: rgba(230, 201, 142, 0.741);
+        border-radius: 12px;
+    }
+
+    /* 当鼠标悬停在滚动条滑块上时改变颜色 */
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(144, 147, 153, 0.561);
+        width: 10px;
+        scrollbar-color: #d2babac7 transparent;
+
+    }
+    @-webkit-keyframes nprogress-spinner {
+        0% {
+            -webkit-transform: rotate(0deg)
+        }
+    
+        100% {
+            -webkit-transform: rotate(360deg)
+        }
+    }
+    
+    @keyframes nprogress-spinner {
+        0% {
+            transform: rotate(0deg)
+        }
+    
+        100% {
+            transform: rotate(360deg)
+        }
+    }    
+}
+
+a.link{
+    box-shadow: 0 -2px rgb(189,195,199) inset;
+    transition: all .3s ease;
+    &:hover{
+        box-shadow: 0 calc(-1rem* var(--article-line-height)) rgba(119,189,236,0.22) inset;
+    }
+}
+
+#TableOfContents{
+    overflow-y: hidden;
+}
+
+@media (min-width: 1100px) {
+  .article-list--compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: none;
+    box-shadow: none;
+    gap: 1rem;
+
+    article {
+      background: var(--card-background);
+      border: none;
+      box-shadow: var(--shadow-l2);
+      margin-bottom: 8px;
+      border-radius: 16px;
+    }
+  }
+}
+.article-list--tile {
+    article {
+        transition: .6s ease;
+        &:hover {
+            transform: scale(0.97, 0.97);
+        }
+    }
+}
+
+.article-list--compact {
+    article {
+        transition: .6s ease;
+        &:hover {
+            transform: translateY(-5px)
+        }
+    }
+}
+
+#nprogress {
+    pointer-events: none;
+
+    .bar {
+        background: rgba(141,153,198,90%);
+        position: fixed;
+        z-index: 1031;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        position: absolute
+    }
+    .peg {
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 40px;
+        height: 100%;
+        box-shadow: 0 0 10px #b12c64, 0 0 5px #ac26a8e6;
+        opacity: 1;
+        -webkit-transform: rotate(3deg)translate(0,-4px);
+        -ms-transform: rotate(3deg)translate(0,-4px);
+        transform: rotate(3deg)translate(0,-4px);
+    }
+    .spinner {
+        display: block;
+        position: fixed;
+        z-index: 1031;
+        top: 15px;
+        right: 15px;
+        position: absolute
+    }
+    .spinner-icon {
+        width: 18px;
+        height: 18px;
+        box-sizing: border-box;
+        border: solid 2px transparent;
+        border-top-color: #6676cf;
+        border-left-color: #6d33da;
+        border-radius: 50%;
+        -webkit-animation: nprogress-spinner 400ms linear infinite;
+        animation: nprogress-spinner 400ms linear infinite
+    }
+    
+}
+
+.nprogress-custom-parent {
+    overflow: hidden;
+    position: relative;
+}
+
+
+

@@ -1,0 +1,13 @@
+<script>
+
+
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") {
+            setTimeout(()=>{
+                NProgress.done();
+            },1500)
+        }
+    });
+</script>

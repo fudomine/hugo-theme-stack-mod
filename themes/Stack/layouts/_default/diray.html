@@ -1,0 +1,38 @@
+{{ define "body-class" }}template-archives{{ end }}
+{{ define "main" }}
+    <header>
+        <!--content/moods 目录下可以创建配置文档-->
+        {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "moods" -}}
+        {{- $terms := $taxonomy.Pages -}}
+        {{ if $terms }}
+        <h2 class="section-title">情绪日志</h2>
+        <div class="subsection-list">
+            <div class="article-list--tile">
+                <!--顶部导航-->
+                {{ range $terms }}
+                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </header>
+    <!--$pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -->
+    <!-- 在config/_default/params.toml 里添加日记文章的目录 -->
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.diarySections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
+
+    {{ range $filtered.GroupByDate "2006" }}
+    {{ $id := lower (replace .Key " " "-") }}
+    <div class="archives-group" id="{{ $id }}">
+        <h2 class="archives-date section-title"><a href="{{ $.RelPermalink }}#{{ $id }}">{{ .Key }}</a></h2>
+        <div class="article-list--compact">
+            {{ range .Pages }}
+                {{ partial "article-list/compact" . }}
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}

@@ -1,0 +1,4 @@
+theme = "Stack"
+baseURL = 'https://www.flashspace.org/'
+languageCode = 'zh-cn'
+title = '刹那空间'
