@@ -1,4 +1,4 @@
 theme = "Stack"
 baseURL = 'https://yourwebsite.com/'
 languageCode = 'zh-cn'
-title = '刹那空间'
+title = 'yourwebtitle'
