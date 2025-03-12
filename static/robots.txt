@@ -1,4 +1,4 @@
-Sitemap: https://www.flashspace.org/sitemap.xml
+Sitemap: https://yourwebsite.com/sitemap.xml
 
 User-agent: *
 Disallow: /tags/
